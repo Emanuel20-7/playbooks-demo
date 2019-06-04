@@ -1,0 +1,20 @@
+- hosts: lb01
+  gather_facts: true
+  tasks:
+    - name: PPA Haproxy 1.8
+      apt_repository:
+      repo: ppa:vbernat/haproxy-1.8
+      register: result
+
+    - name: Display Haproxy PPA
+      debug:
+        msg: result
+
+    - name: apt update
+      apt:
+      update_cache: yes
+
+    - name: Install Haproxy 1.8
+      apt:
+      name: haproxy
+      update_cache: yes
