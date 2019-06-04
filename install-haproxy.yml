@@ -10,7 +10,7 @@
       debug:
         msg: result
 
-    - name: Install Haproxy 1.8
+    - name: Update Cache and  install Haproxy 1.8
       apt:
-      name: haproxy
-      update_cache: yes
+        name: haproxy
+        update_cache: yes
