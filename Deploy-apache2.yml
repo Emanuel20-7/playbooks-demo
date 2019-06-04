@@ -1,0 +1,13 @@
+- hosts: webserver01
+  gather_facts: true
+  tasks:
+
+    - name: Install apache2
+      apt:
+        name: apache2
+        update_cache: yes
+      register: result
+
+    - name: Display output
+      debug:
+        msg: result
