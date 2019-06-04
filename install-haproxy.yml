@@ -3,9 +3,8 @@
   tasks:
     - name: PPA Haproxy 1.8
       apt_repository:
-        repo: ppa:vbernat/haproxy-1.8
+        repo: 'ppa:vbernat/haproxy-1.8'
       register: result
-
     - name: Display Haproxy PPA
       debug:
         msg: result
