@@ -1,0 +1,43 @@
+---
+- name: Secure ssh
+  hosts: web01
+  become: yes
+  tasks:
+    - name: lineinfile
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        line: AllowUsers ebarrionuevo
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: Disable root login
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin prohibit-password'
+        line: 'PermitRootLogin no'
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: Only enter with PubKey
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#PasswordAuthentication yes'
+        line: 'PasswordAuthentication yes'
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: Set up Pubkey Authentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#PubkeyAuthentication yes'
+        line: 'PubkeyAuthentication yes'
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: Authorized Key File
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#AuthorizedkeysFile .ssh/authorized_keys'
+        line:  'AuthorizedkeysFile .ssh/authorized_keys'
+      register: out_lines
+    - debug: var=out_lines
