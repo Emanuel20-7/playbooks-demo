@@ -10,7 +10,7 @@
   tasks:
 
     - name: Install packages
-      apt: 
+      apt:
         name: "{{ packages }}"
       vars:
         packages:
@@ -18,12 +18,6 @@
           - git
         update_cache: yes
 
-  apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - foo
-    - foo-tools
     - name: Disable  default site
       command: a2dissite 000-default.conf
 
