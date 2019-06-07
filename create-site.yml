@@ -4,7 +4,6 @@
   become: yes
 
   vars:
-    http_port: 80
     domain: app.b2cloud.com.ar
 
   tasks:
