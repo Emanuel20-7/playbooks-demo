@@ -1,0 +1,32 @@
+---
+- name: challenge for authorized
+  hosts: lb01
+  become: yes
+
+  vars:
+    server: app.b2cloud.com.ar
+    mail: infraestructura@b2cloud.com.ar
+
+  tasks:
+
+    - name: certbot
+      command: certbot certonly --standalone -d {{ server }} --agree-tos --email {{ mail }} --http-01-port=8080
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: create file.pem
+      command: cat /etc/letsencrypt/live/{{ server }}/fullchain.pem /etc/letsencrypt/live/{{ server }}/privkey.pem > certs/{{ server }}.pem
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: check config
+      command: haproxy -f /etc/haproxy/haproxy.cfg -c
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: restart haproxy service
+      systemd:
+        state: restarted
+        name: haproxy
+      register: out_lines
+    - debug: var=out_lines
