@@ -10,7 +10,6 @@
   tasks:
 
     - name: Install packages
-      ['apache2', 'git']
       apt: name=['apache2','git'] update_cache=yes state=latest
 
     - name: Disable  default site
