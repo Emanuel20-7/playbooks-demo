@@ -1,0 +1,63 @@
+---
+- name: Haproxy Config Backend
+  hosts: lb01
+  become: yes
+
+  vars:
+    server: app.b2cloud.com.ar
+    privateip: 172.100.0.6
+    backend: app_webserver01
+
+  tasks:
+
+    - name: ppa haproxy 1.8
+      apt_repository:
+        repo: 'ppa:vbernat/haproxy-1.8'
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: Install packages
+      apt:
+        name: "{{ packages }}"
+        force_apt_get: yes
+      vars:
+        packages:
+          - software-properties-common
+          - git
+        update_cache: yes
+
+    - name: ppa for certbot
+      apt_repository:
+        repo: 'ppa:certbot/certbot'
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: update cache and  install haproxy 1.8
+      apt:
+        name: haproxy
+        force_apt_get: yes
+        update_cache: yes
+
+    - name: update cache and  install certbot
+      apt:
+        name: certbot
+        force_apt_get: yes
+        update_cache: yes
+
+    - name: rename file
+      command: mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.ori
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: set new parameters
+      template: src=haproxy.cfg dest=/etc/haproxy/haproxy.cfg
+      register: out_lines
+    - debug: var=out_lines
+      notify:
+         - restart apache2
+
+  handlers:
+    - name: restart Haproxy
+      systemd:
+        state: restarted
+        name: haproxy
