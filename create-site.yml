@@ -15,6 +15,9 @@
         - apache2
         - git
 
+    - name: Disable  default site
+      command: a2dissite 000-default.conf
+
     - name: create virtual host file
       template: src=virtualhost.conf dest=/etc/apache2/sites-available/{{ domain }}.conf
 
@@ -28,7 +31,7 @@
     - name: clone basic html template
       git: repo=https://github.com/Emanuel20-7/Demo-Templates.git dest=/var/www/app.b2cloud.com.ar update=no
 
-  handlers:
+   handlers:
     - name: restart apache2
       systemd:
         state: restart
