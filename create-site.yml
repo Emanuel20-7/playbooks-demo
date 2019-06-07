@@ -10,10 +10,8 @@
   tasks:
 
     - name: Install packages
-      apt: name={{ item }} update_cache=yes state=latest
-      with_items:
-        - apache2
-        - git
+      ['apache2', 'git']
+      apt: name=['apache2','git'] update_cache=yes state=latest
 
     - name: Disable  default site
       command: a2dissite 000-default.conf
