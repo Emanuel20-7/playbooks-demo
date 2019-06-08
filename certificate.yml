@@ -14,6 +14,11 @@
       register: out_lines
     - debug: var=out_lines
 
+    - name: create directory
+      command: mkdir /etc/haproxy/certs
+      register: out_lines
+    - debug: var=out_lines
+     
     - name: create file.pem
       command: cat /etc/letsencrypt/live/{{ server }}/fullchain.pem /etc/letsencrypt/live/{{ server }}/privkey.pem > certs/{{ server }}.pem
       register: out_lines
