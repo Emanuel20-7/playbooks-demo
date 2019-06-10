@@ -1,6 +1,6 @@
 ---
 - name: Deploy VirtualHosts on Apache2
-  hosts: web01
+  hosts: web02
   become: yes
 
   vars:
