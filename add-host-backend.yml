@@ -5,7 +5,7 @@
   tasks:
     - name: Add server to backend
       lineinfile:
-        path: /etc/haproxy/haprox.cfg
+        path: /etc/haproxy/haproxy.cfg
         regexp: server webserver01 172.100.0.6:80 cookie app check inter 3000
         line:   server webserver03 172.100.0.10:80 cookie app check inter 3000
       register: out_lines
