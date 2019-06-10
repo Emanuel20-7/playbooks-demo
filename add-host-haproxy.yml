@@ -1,0 +1,18 @@
+---
+- name: add to backend
+  hosts: lb01
+  become: yes
+
+  vars:
+    server: web03
+    backend: app.b2cloud.com.ar
+  tasks:
+
+    - name: Enable server in '{{ backend }}' backend pool wait until healthy
+      haproxy:
+        state: enabled
+        host: "{{ server }}"
+        backend: "{{ backend }}"
+        wait: yes
+      register: out_lines
+    - debug: var=out_lines
