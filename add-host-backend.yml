@@ -6,8 +6,7 @@
     - name: Add server to backend
       lineinfile:
         path: /etc/haproxy/haproxy.cfg
-        regexp: server webserver03 172.100.0.10:80 cookie app check inter 3000
-        insertafter:  server webserver03 172.100.0.10:80 cookie app check inter 3000
-        line:   server webserver04 172.100.0.11:80 cookie app check inter 3000
+        regexp: "    server webserver03  172.100.0.10:80 cookie app check inter 3000$"
+        line: server webserver04 172.100.0.11:80 cookie app check inter 3000
       register: out_lines
     - debug: var=out_lines
