@@ -10,3 +10,11 @@
         state: absent
       register: result
     - debug: var=result
+
+    - name: Remove useless packages from the cache
+      apt:
+       autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
