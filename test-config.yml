@@ -3,9 +3,6 @@
   hosts: web01
   become: yes
 
-    vars:
-      line-to-find: 
-
   tasks:
 
     - name: Check content of web and status
