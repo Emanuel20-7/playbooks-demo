@@ -20,3 +20,13 @@
       apt:
         force_apt_get: yes
         autoremove: yes
+
+    - name:  remove index.html
+      file:
+        path: /var/www/app.b2cloud.com.ar/index.html
+        state: absent
+
+    - name: remove file.conf
+      file:
+        path: /etc/apache2/sites-available/app.b2cloud.com.ar.conf
+      state: absent
