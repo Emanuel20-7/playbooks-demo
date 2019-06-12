@@ -8,6 +8,7 @@
     - name: Check content of web and status
       uri:
         url: https://app.b2cloud.com.ar
+        return_content: yes
       register: output
       failed_when: "'AWESOME' not in this.content"
 
