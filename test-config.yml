@@ -1,0 +1,17 @@
+---
+- name: Haproxy
+  hosts: lb01
+  become: yes
+
+  tasks:
+
+    - name: Check content of web and status
+      uri:
+        url: https://app.b2cloud.com.ar
+      register: output
+      failed_when: "'AWESOME' not in this.content"
+
+    - name: check config
+      command: haproxy -f /etc/haproxy/haproxy.cfg -c
+      register: out_lines
+    - debug: var=out_lines
