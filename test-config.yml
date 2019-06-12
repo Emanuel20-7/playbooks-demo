@@ -10,4 +10,4 @@
         url: https://app.b2cloud.com.ar
         return_content: yes
       register: out_lines
-      failed_when: '{{ wordtofind }} not in out_lines.content'
+      failed_when: '"{{ wordtofind }}" not in out_lines.content'
