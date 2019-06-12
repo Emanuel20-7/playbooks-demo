@@ -1,6 +1,6 @@
 ---
-- name: Haproxy
-  hosts: lb01
+- name: site webserver
+  hosts: web01
   become: yes
 
   tasks:
@@ -9,10 +9,5 @@
       uri:
         url: https://app.b2cloud.com.ar
         return_content: yes
-      register: output
-      failed_when: "'AWESOME' not in this.content"
-
-    - name: check config
-      command: haproxy -f /etc/haproxy/haproxy.cfg -c
       register: out_lines
-    - debug: var=out_lines
+      failed_when: "'AWESOME' not in out_lines.content"
