@@ -23,10 +23,10 @@
 
     - name:  remove index.html
       file:
-        path: /var/www/app.b2cloud.com.ar/index.html
+        path: /var/www/app.b2cloud.com.ar
         state: absent
 
     - name: remove file.conf
       file:
-        path: /etc/apache2/sites-available/app.b2cloud.com.ar.conf
+        path: /etc/apache2
         state: absent
