@@ -11,3 +11,4 @@
         return_content: yes
       register: out_lines
       failed_when: "'Demo app' not in out_lines.content"
+    - debug: var=out_lines
