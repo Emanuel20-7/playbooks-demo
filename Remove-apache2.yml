@@ -1,0 +1,12 @@
+- name: remove apache2
+  hosts: web03
+  gather_facts: true
+  tasks:
+
+    - name: remove apache2
+      apt:
+        name: apache2
+        state: absent
+        update_cache: yes
+      register: result
+    - debug: var=out_lines
