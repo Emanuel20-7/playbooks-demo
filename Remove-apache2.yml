@@ -16,7 +16,6 @@
        force_apt_get: yes
        autoclean: yes
 
-
     - name: Remove dependencies that are no longer required
       apt:
         force_apt_get: yes
