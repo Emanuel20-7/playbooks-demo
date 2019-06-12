@@ -3,6 +3,9 @@
   hosts: web01
   become: yes
 
+    vars:
+      line-to-find: 
+
   tasks:
 
     - name: Check content of web and status
@@ -10,4 +13,4 @@
         url: https://app.b2cloud.com.ar
         return_content: yes
       register: out_lines
-      failed_when: "'Demo app' not in out_lines.content"
+      failed_when: "'{{ line-to-find }}' not in out_lines.content"
