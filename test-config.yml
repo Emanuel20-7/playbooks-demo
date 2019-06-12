@@ -10,4 +10,4 @@
         url: https://app.b2cloud.com.ar
         return_content: yes
       register: out_lines
-      failed_when: "'ABOUT RED HAT' not in out_lines.content"
+      failed_when: "'Demo app' not in out_lines.content"
