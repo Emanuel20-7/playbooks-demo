@@ -9,4 +9,4 @@
         state: absent
         update_cache: yes
       register: result
-    - debug: var=out_lines
+    - debug: var=result
