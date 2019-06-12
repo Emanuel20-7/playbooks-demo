@@ -7,6 +7,7 @@
       apt:
         name: apache2
         state: absent
+        force_apt_get: yes
         update_cache: yes
       register: result
     - debug: var=result
