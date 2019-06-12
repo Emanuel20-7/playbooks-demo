@@ -1,0 +1,18 @@
+---
+- name: update app
+  hosts: webservers
+  become: yes
+
+  tasks:
+
+    - name: update git repo
+      command: git pull
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: restart apache2  service
+      systemd:
+        state: restarted
+        name: apache2
+      register: out_lines
+    - debug: var=out_lines
