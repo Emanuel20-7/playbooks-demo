@@ -1,3 +1,4 @@
+---
 - name: Add ppa for Haproxy
   hosts: lb01
   gather_facts: true
