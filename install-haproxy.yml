@@ -1,4 +1,5 @@
-- hosts: lb01
+- name: Add ppa for Haproxy
+  hosts: lb01
   gather_facts: true
   tasks:
     - name: PPA Haproxy 1.8
