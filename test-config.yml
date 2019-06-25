@@ -1,6 +1,6 @@
 ---
 - name: site webserver
-  hosts: webserver
+  hosts: webservers
   become: yes
 
   tasks:
