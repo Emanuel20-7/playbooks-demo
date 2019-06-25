@@ -1,0 +1,14 @@
+---
+- name: Remove user {{ user }}
+  hosts: webservers
+  gather_facts: true
+
+  tasks:
+
+    - name: Remove on all webservers {{ user }} 
+      user:
+        name: {{ user }}
+        state: absent
+        remove: yes
+      register: out_lines
+    - debug: var=out_lines
