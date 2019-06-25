@@ -4,13 +4,10 @@
   become: yes
 
   tasks:
-
-    - name: Create {{ user }}
+    - name: Remove {{ user }}
       user:
         name: {{ user }}
-        comment: another admin
-        uid: 1040
-        group: {{ group }}
+        state: absent
+        remove: yes
       register: out_lines
-
     - debug: var=out_lines
