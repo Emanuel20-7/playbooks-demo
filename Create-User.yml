@@ -1,15 +1,15 @@
 ---
-- name: Create user {{ user }}
+- name: Create user "{{ user }}"
   hosts: webservers
   gather_facts: true
 
   tasks:
 
-    - name: Add the user {{ user }} with uid and primary group
+    - name: Add the user ""{{ user }}" with uid and primary group
       user:
-        name: {{ user }}
+        name: "{{ user }}"
         comment: John Wick
         uid: 1040
-        group: {{ group }}
+        group: "{{ group }}"
       register: out_lines
     - debug: var=out_lines
