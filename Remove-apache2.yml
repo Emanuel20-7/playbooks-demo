@@ -1,3 +1,4 @@
+---
 - name: remove apache2
   hosts: webservers
   gather_facts: true
