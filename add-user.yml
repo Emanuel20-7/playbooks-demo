@@ -1,0 +1,15 @@
+---
+- name: Add user on all hosts
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create
+      user:
+        name: {{ user }}
+        comment: another admin
+        uid: 1040
+        group: {{ group }}
+      register: out_lines
+
+    - debug: var=out_lines
