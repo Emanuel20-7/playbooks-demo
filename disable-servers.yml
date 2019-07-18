@@ -9,7 +9,7 @@
       haproxy:
         state: disabled
         host: '{{ inventory_hostname }}'
-        socket: /var/run/haproxy.sock
+        socket: /var/run/haproxy/admin.sock
         backend: app_webserver01
         wait: yes
       register: out_lines
