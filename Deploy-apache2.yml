@@ -1,4 +1,6 @@
-- hosts: web01
+---
+- name: Package for Apache2
+  hosts: web01
   gather_facts: true
   tasks:
 
@@ -6,8 +8,5 @@
       apt:
         name: apache2
         update_cache: yes
-      register: result
-
-    - name: Display output
-      debug:
-        msg: result
+      register: out_lines
+    - debug: var=out_lines
