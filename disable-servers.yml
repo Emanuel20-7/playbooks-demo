@@ -1,6 +1,6 @@
 ---
-- name: Create user "{{ inventory_hostname }}"
-  hosts: webservers
+- name: Disabled server on backend "{{ inventory_hostname }}"
+  hosts: lb01
   gather_facts: true
 
   tasks:
@@ -8,7 +8,7 @@
     - name: Disable server, provide socket file, wait until status reports in maintenance
       haproxy:
         state: disabled
-        host: '{{ inventory_hostname }}'
+        host: "{{ inventory_hostname }}"
         socket: /var/run/haproxy/admin.sock
         backend: app_webserver01
       register: out_lines
