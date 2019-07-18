@@ -1,0 +1,13 @@
+---
+- name: Start Instance
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+
+  - name: Power On
+    azure_rm_virtualmachine:
+      resource_group: b2cloud
+      name: WS12R201
+    register: out_lines
+  - debug: var=out_lines
