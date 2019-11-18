@@ -12,3 +12,9 @@
       register: out_lines
       failed_when: "'Demo app' not in out_lines.content"
     - debug: var=out_lines
+
+    - name: Send notification message via Slack
+      slack:
+         token: rM5m5HPbqYbMV1EgT5dtPvko
+         msg: '{{ inventory_hostname }} completed'
+      delegate_to: localhost
