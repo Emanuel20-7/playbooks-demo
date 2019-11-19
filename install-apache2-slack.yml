@@ -16,7 +16,7 @@
    - name: apache2 start
      systemd:
        name: apache2
-       state: started
+       state: reloaded
      notify: service_start_apache
 
   handlers:
