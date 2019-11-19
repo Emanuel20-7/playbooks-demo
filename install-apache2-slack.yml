@@ -10,12 +10,12 @@
      apt:
        name: apache2
        state: present
-       notify: installation_apache
+     notify: installation_apache
 
    - name: apache2 start
      systemd:
        state: started
-       notify: service_start_apache
+     notify: service_start_apache
 
   handlers:
 
