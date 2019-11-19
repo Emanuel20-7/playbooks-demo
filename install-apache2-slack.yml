@@ -30,5 +30,5 @@
      slack:
       domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
-      msg: "action completed"
+      msg: "start apache2 service"
       channel: "#demo-tower"
