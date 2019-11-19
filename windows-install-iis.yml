@@ -11,4 +11,4 @@
        name:
        - Web-Server
        - Web-Common-Http
-       state: present
+       state:  absent
