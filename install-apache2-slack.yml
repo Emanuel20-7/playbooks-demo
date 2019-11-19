@@ -31,5 +31,5 @@
      slack:
       domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
-      msg: "{{ ansible_all_ipv4_addresses}} start apache2 service"
+      msg: "{{ inventory_hostname }} start apache2 service"
       channel: "#demo-tower"
