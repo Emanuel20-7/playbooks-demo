@@ -25,11 +25,11 @@
      slack:
       domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
-      msg: "action completed"
+      msg: "{{ inventory_hostname }} action completed"
       channel: "#demo-tower"
    - name: service_start_apache
      slack:
       domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
-      msg: "start apache2 service"
+      msg: "{{ ansible_all_ipv4_addresses}} start apache2 service"
       channel: "#demo-tower"
