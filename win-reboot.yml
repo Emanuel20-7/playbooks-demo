@@ -1,0 +1,13 @@
+---
+- name: Reboot and print msg
+  hosts: WinServers
+  connection: winrm
+  gather_facts: true
+
+  tasks:
+
+    - name: Rebooting
+      win_reboot:
+        msg: Reboot initiated by  Ansible
+      register: out_lines
+    - debug: var=out_lines pre_reboot_delay_sec: 10
