@@ -8,7 +8,6 @@
 
    - name: apache2 install
      apt:
-       force_apt_get: yes
        name: apache2
        state: present
      notify: installation_apache
@@ -31,5 +30,5 @@
      slack:
       domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
-      msg: "{{ inventory_hostname }} start apache2 service"
+      msg: "{{ inventory_hostname } start apache2 service"
       channel: "#demo-tower"
