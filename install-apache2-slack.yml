@@ -23,12 +23,12 @@
    - name: installation_apache
      slack:
       domain: b2c-solutions.slack.com
-      tokem: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
+      token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
       msg: "action completed"
       channel: "#demo-tower"
    - name: service_start_apache
      slack:
       domain: b2c-solutions.slack.com
-      tokem: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
+      token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
       msg: "action completed"
       channel: "#demo-tower"
