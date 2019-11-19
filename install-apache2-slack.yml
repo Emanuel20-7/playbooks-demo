@@ -22,13 +22,13 @@
 
    - name: installation_apache
      slack:
-      domain: b2c-solutions.slack.com
+      domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
       msg: "action completed"
       channel: "#demo-tower"
    - name: service_start_apache
      slack:
-      domain: b2c-solutions.slack.com
+      domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
       msg: "action completed"
       channel: "#demo-tower"
