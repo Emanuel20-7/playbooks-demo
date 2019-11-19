@@ -1,6 +1,6 @@
 ---
 - name: Install apache2
-  hosts: webserver
+  hosts: webservers
   gather_facts: false
   become: yes
 
