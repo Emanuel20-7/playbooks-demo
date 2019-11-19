@@ -1,6 +1,6 @@
 ---
 - name: Secure ssh
-  hosts: web01
+  hosts: web02
   become: yes
   tasks:
     - name: lineinfile
