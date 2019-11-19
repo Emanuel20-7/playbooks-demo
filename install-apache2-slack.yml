@@ -6,27 +6,28 @@
 
   tasks:
 
-    - name: apache2 install
-      apt:
-        name: apache2
-        state: present
-      notify: installation_apache
+   - name: apache2 install
+     apt:
+       name: apache2
+       state: present
+       notify: installation_apache
 
-    - name: apache2 start
-      systemd:
-        state: started
-      notify: service_start_apache
+   - name: apache2 start
+     systemd:
+       state: started
+       notify: service_start_apache
 
-    handlers:
-    - name: installation_apache
-      slack:
-        domain: https://b2c-solutions.slack.com
-        tokem: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
-        msg: "action completed"
-        channel: "#demo-tower"
-    - name: service_start_apache
-      slack:
-        domain: https://b2c-solutions.slack.com
-        tokem: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
-        msg: "action completed"
-        channel: "#demo-tower"
+  handlers:
+
+   - name: installation_apache
+     slack:
+      domain: https://b2c-solutions.slack.com
+      tokem: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
+      msg: "action completed"
+      channel: "#demo-tower"
+   - name: service_start_apache
+     slack:
+      domain: https://b2c-solutions.slack.com
+      tokem: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
+      msg: "action completed"
+      channel: "#demo-tower"
