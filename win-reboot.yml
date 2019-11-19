@@ -1,6 +1,6 @@
 ---
 - name: Reboot and print msg
-  hosts: WinServers
+  hosts: WS12R201-ST
   connection: winrm
   gather_facts: true
 
