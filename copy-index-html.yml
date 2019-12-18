@@ -1,0 +1,26 @@
+---
+- name: copy files from remote server
+  hosts: webservers
+  become: yes
+
+  tasks:
+
+    - name: Cope with owner and permissions
+      copy:
+        src: /home/ebarrionuevo/index.hml
+        dest: /var/www/html/
+          owner: www-data
+          group: www-data
+          mode:  '0644'
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: Copy image
+      copy:
+        src: /home/ebarrionuevo/red-hat.jpg
+        dest: /var/www/html/
+        owner: www-data
+        group: www-data
+        mode: '0644'
+      register: out_lines
+    - debug: var=out_lines

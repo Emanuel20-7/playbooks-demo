@@ -1,0 +1,23 @@
+---
+- name: copy files from remote server
+  hosts: test
+  become: yes
+
+  tasks:
+
+    - name: Cope with owner and permissions
+      copy:
+        src: /home/username/index.hml
+        dest: /var/www/html/
+          owner: www-data
+          group: www-data
+          mode:  '0644'
+
+
+    - name: Copy image
+      copy:
+        src: /home/username/red-hat.jpg
+        dest: /var/www/html/
+        owner: www-data
+        group: www-data
+        mode: '0644'

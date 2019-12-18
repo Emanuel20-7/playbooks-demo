@@ -1,0 +1,41 @@
+---
+- name: Deploy VirtualHosts on Apache2
+  hosts: test
+  become: yes
+
+  vars:
+    domain: test.example.com
+
+  tasks:
+
+    - name: Install packages
+      apt:
+        name: "{{ packages }}"
+        force_apt_get: yes
+      vars:
+        packages:
+          - apache2
+          - git
+        update_cache: yes
+
+    - name: Disable  default site
+      command: a2dissite 000-default.conf
+
+    - name: create virtual host file
+      template: src=virtualhost.conf dest=/etc/apache2/sites-available/{{ domain }}.conf
+
+    - name: a2ensite {{ domain }}
+      command: a2ensite {{ domain }}
+      args:
+        creates: /etc/apache2/sites-enabled/{{ domain }}.conf
+      notify:
+        - restart apache2
+
+    - name: clone basic html template
+      git: repo=https://github.com/Demo-Templates.git dest=/var/www/{{ domain }} update=no
+
+  handlers:
+    - name: restart apache2
+      systemd:
+        state: restarted
+        name: apache2
