@@ -1,0 +1,22 @@
+---
+- name: Remove apache2
+  hosts: webservers
+  gather_facts: false
+  become: yes
+
+  tasks:
+
+   - name: apache2 removed
+     apt:
+       name: apache2
+       state: absent
+     notify: removed_apache
+
+  handlers:
+
+   - name: removed_apache
+     slack:
+      domain: hooks.slack.com
+      token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
+      msg: "{{ inventory_hostname }} Removed apache2"
+      channel: "#demo-tower"

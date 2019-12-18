@@ -1,0 +1,14 @@
+---
+- name: Install IIS (Web-Server and Web-Common-Http)
+  hosts: WS12R201-ST
+  connection: winrm
+  gather_facts: true
+
+  tasks:
+
+    - name: Install IIS (Web-Server and Web-Common-Http)
+      win_feature:
+       name:
+       - Web-Server
+       - Web-Common-Http
+       state:  present
