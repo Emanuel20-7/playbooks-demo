@@ -103,8 +103,9 @@ backend {{ backend }}
     description Test app
     mode http
     redirect scheme https if !{ ssl_fc }
-    server {{ server }}  {{ privateip }}:80 cookie app check inter 3000
-
+{{% for servers in gorups.webservers }}
+    server {{ servers }}  {{ ansible_addr }}:80 cookie app check inter 3000
+{% endfor %}
 
 ###############################################
 ##### Only for Request SSL to Letsencrypt #####

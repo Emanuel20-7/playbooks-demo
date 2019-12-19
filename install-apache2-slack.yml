@@ -24,12 +24,16 @@
      slack:
       domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
+      icon_url: https://www.ansible.com/favicon.ico
+      color: good
       msg: "{{ inventory_hostname }} Instalation is completed"
       channel: "#demo-tower"
-      
+
    - name: service_start_apache
      slack:
       domain: hooks.slack.com
       token: "TMSBL3AR1/BQPA5PKNG/B9oVZCxZtlTsermrh7dz046F"
+      icon_url: https://www.ansible.com/favicon.ico
+      color: good
       msg: "{{ inventory_hostname }} the apache2 service is started"
       channel: "#demo-tower"
