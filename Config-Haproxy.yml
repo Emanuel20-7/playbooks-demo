@@ -1,0 +1,24 @@
+---
+- name: Haproxy Config Backend
+  hosts: lb02
+  become: yes
+
+  vars:
+    server: app.b2cloud.com.ar
+    privateip: 172.100.0.6
+    backend: app_webserver01
+
+  tasks:
+
+    - name: set new parameters
+      template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+      register: out_lines
+    - debug: var=out_lines
+      notify:
+         - restart apache2
+
+  handlers:
+    - name: restart Haproxy
+      systemd:
+        state: restarted
+        name: haproxy
