@@ -103,9 +103,10 @@ backend {{ backend }}
     description Test app
     mode http
     redirect scheme https if !{ ssl_fc }
-{% for servers in groups.webservers %}
-    server {{ servers }}  {{ ansible_default_ipv4 }}:80 cookie app check inter 3000
-{% endfor %}
+    server web01  172.100.0.6:80  check inter 3000
+    server web02  172.100.0.9:80  check inter 3000
+    server web03  172.100.0.10:80 check inter 3000
+
 
 ###############################################
 ##### Only for Request SSL to Letsencrypt #####
