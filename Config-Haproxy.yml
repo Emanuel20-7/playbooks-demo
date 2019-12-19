@@ -4,6 +4,7 @@
   become: yes
 
   vars:
+    server: web01
     privateip: 172.100.0.6
     backend: app_webserver01
 
