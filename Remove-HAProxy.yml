@@ -7,26 +7,29 @@
     - name: remove haproxy
       apt:
         name: haproxy
+        purge: yes
         force_apt_get: yes
         state: absent
       register: result
     - debug: var=result
+
+    - name: Remove dependencies that are no longer required
+      apt:
+        name: haproxy
+        force_apt_get: yes
+        autoremove: yes
+
+    - name: Remove useless packages from the cache
+      apt:
+        name: haproxy
+        force_apt_get: yes
+        autoclean: yes
 
     - name: PPA Haproxy 1.8
       apt_repository:
         repo: 'ppa:vbernat/haproxy-1.8'
         state: absent
       register: result
-
-    - name: Remove useless packages from the cache
-      apt:
-       force_apt_get: yes
-       autoclean: yes
-
-    - name: Remove dependencies that are no longer required
-      apt:
-        force_apt_get: yes
-        autoremove: yes
 
     - name:  remove directory
       file:
