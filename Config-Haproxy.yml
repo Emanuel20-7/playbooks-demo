@@ -1,6 +1,6 @@
 ---
 - name: Haproxy Config Backend
-  hosts: lb02
+  hosts: webservers
   become: yes
 
   vars:
