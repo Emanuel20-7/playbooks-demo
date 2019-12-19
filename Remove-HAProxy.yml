@@ -1,0 +1,34 @@
+---
+- name: remove haproxy
+  hosts: lb02
+  gather_facts: true
+  tasks:
+
+    - name: remove haproxy
+      apt:
+        name: haproxy
+        force_apt_get: yes
+        state: absent
+      register: result
+    - debug: var=result
+
+    - name: PPA Haproxy 1.8
+      apt_repository:
+        repo: 'ppa:vbernat/haproxy-1.8'
+        state: absent
+      register: result
+
+    - name: Remove useless packages from the cache
+      apt:
+       force_apt_get: yes
+       autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      apt:
+        force_apt_get: yes
+        autoremove: yes
+
+    - name:  remove directory
+      file:
+        path: /etc/haproxy
+        state: absent
