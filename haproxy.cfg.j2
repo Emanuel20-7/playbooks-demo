@@ -104,7 +104,7 @@ backend {{ backend }}
     mode http
     redirect scheme https if !{ ssl_fc }
 {% for servers in groups.webservers %}
-    server {{ servers }}  {{ address }}:80 cookie app check inter 3000
+    server {{ servers }}  {{ ansible_eth0.ipv4.address }}:80 cookie app check inter 3000
 {% endfor %}
 
 ###############################################
