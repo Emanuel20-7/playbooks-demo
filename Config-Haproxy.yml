@@ -4,7 +4,6 @@
   become: yes
 
   vars:
-    server: app.b2cloud.com.ar
     privateip: 172.100.0.6
     backend: app_webserver01
 
