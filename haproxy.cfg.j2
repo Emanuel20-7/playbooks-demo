@@ -103,7 +103,7 @@ backend {{ backend }}
     description Test app
     mode http
     redirect scheme https if !{ ssl_fc }
-{{% for servers in gorups.webservers }}
+{{% for servers in groups.webservers }}
     server {{ servers }}  {{ ansible_addr }}:80 cookie app check inter 3000
 {% endfor %}
 
