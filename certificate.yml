@@ -18,7 +18,9 @@
       command: mkdir /etc/haproxy/certs
       register: out_lines
     - debug: var=out_lines
-     
+### NOTE ###
+# IF play create file.pem fails change command for shell module #
+ 
     - name: create file.pem
       command: cat /etc/letsencrypt/live/{{ server }}/fullchain.pem /etc/letsencrypt/live/{{ server }}/privkey.pem > certs/{{ server }}.pem
       register: out_lines
