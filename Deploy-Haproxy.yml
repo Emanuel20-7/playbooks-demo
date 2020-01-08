@@ -61,3 +61,44 @@
       systemd:
         state: restarted
         name: haproxy
+
+
+
+        ---
+- name: Renew tls certificates
+  hosts: b2cloud
+  become: True
+  gather_facts: no
+
+  vars:
+    server: spor.b2cloud.com.ar
+    cname1: www.spor.b2cloud.com.ar
+    # cname2: webserver.b2cloud.com.ar
+    mail: infraestructura@b2cloud.com.ar
+    ansible_python_interpreter: /usr/bin/python3.5
+
+  tasks:
+
+          #- name: renew ssl for all domains
+          #command: certbot renew --force-renewal
+          # register: out_lines
+          #  - debug: var=out_lines
+
+    - name: Create file.pem
+      shell:  cat /etc/letsencrypt/live/{{ server }}/fullchain.pem /etc/letsencrypt/live/{{ server }}/privkey.pem > certs/{{ server }}.pem
+      args:
+       chdir: /etc/haproxy/
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: check config
+      command: haproxy -f /etc/haproxy/haproxy.cfg -c
+      register: out_lines
+    - debug: var=out_lines
+
+    - name: restart haproxy service
+      systemd:
+        state: restarted
+        name: haproxy
+      register: out_lines
+    - debug: var=out_lines
