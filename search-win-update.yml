@@ -1,6 +1,6 @@
 ---
 - name: Only search and list what found
-  hosts:
+  hosts: WS12R201-ST
 
   tasks:
     - name: Searching Update
