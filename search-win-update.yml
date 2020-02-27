@@ -13,4 +13,4 @@
         log_path: c:\ansible_wu.txt
         state: searched
       register: Status_out
-    - debug: var=Status_out+
+    - debug: var=Status_out
