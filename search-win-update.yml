@@ -1,0 +1,16 @@
+---
+- name: Only search and list what found
+  hosts:
+
+  tasks:
+    - name: Searching Update
+      win_updates:
+        category_names:
+          - SecurityUpdates
+          - CriticalUpdates
+          - Updates
+          - UpdateRollups
+        log_path: c:\ansible_wu.txt
+        state: searched
+      register: Status_out
+    - debug: var=Status_out+
