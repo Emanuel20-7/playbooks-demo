@@ -1,1 +1,1 @@
-# playbooks-demo
+# Playbooks for workshop Ansible
