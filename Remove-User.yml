@@ -1,6 +1,6 @@
 ---
 - name: Remove user "{{ user }}"
-  hosts: webservers
+  hosts: all
   gather_facts: true
 
   tasks:
