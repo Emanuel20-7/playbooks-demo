@@ -4,9 +4,9 @@
   become: yes
 
   tasks:
-    - name: Remove {{ user }}
+    - name: Remove "{{ user }}"
       user:
-        name: {{ user }}
+        name: "{{ user }}"
         state: absent
         remove: yes
       register: out_lines
