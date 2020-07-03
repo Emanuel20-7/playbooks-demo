@@ -1,6 +1,6 @@
 ---
 - name: Package for Apache2
-  hosts: web01
+  hosts: all
   gather_facts: true
   tasks:
 
