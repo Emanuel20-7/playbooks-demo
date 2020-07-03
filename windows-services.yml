@@ -1,0 +1,8 @@
+---
+- name: Running Services on Server Windows
+  hosts: WS12R201-ST
+  tasks:
+    - name: get service
+      win_shell: Get-Service | Where-Object Status -EQ "Running" | Select "Status","Name","DisplayName"
+      register: Status_out
+    - debug: var=Status_out
