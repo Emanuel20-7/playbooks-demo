@@ -1,8 +1,0 @@
----
-- name: Azure Dinamyc Inventory
-  hosts: azure
-  connection: local
-  gather_facts: no
-  tasks:
-
-   - debug: msg="{{inventory_hostname}} powerstate {{powerstate}} Public ip method alloc {{public_ip_alloc_method}} {{public_ip}} Private ip {{private_ip}}"
